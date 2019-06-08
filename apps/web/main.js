@@ -52,7 +52,6 @@ posts.forEach(file => {
     mainApp.post(post.path, post.func.bind(null, con));
     console.log(`POST `+`${post.path}`+` загржен.`);
     delete require.cache[require.resolve(`./post/${file}`)];
-    counteris++;
   } catch (e) {console.warn(e)}
 
 });
