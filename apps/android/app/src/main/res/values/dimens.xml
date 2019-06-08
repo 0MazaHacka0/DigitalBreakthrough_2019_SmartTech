@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Main screen -->
+    <!-- Layout -->
+    <dimen name="main_layout_margin_left">15dp</dimen>
+    <dimen name="main_layout_margin_right">15dp</dimen>
+    <!-- Company logo -->
+    <dimen name="main_company_logo_margin_top">58dp</dimen>
+    <dimen name="main_company_logo_margin_bottom">25dp</dimen>
+    <dimen name="main_company_logo_size">240dp</dimen>
+    <!-- Text field -->
+    <dimen name="main_text_field_margin_top">0dp</dimen>
+    <dimen name="main_text_field_margin_bottom">5dp</dimen>
+    <!-- Buttons -->
+    <dimen name="main_login_button"></dimen>
+
+</resources>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DoingTogether</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <!-- Main activity -->
+    <string name="main_company_logo_description">Company logo</string>
+
 </resources>
