@@ -8,7 +8,7 @@ var express = require('express')
 	, bodyParser = require('body-parser')
 	;
 
-let con = require('mysql').createConnection({user: "sediscom", password: "tc5j6lmtpC6p", database: "discord", charset: "utf8mb4"});
+let con = require('mysql').createConnection({user: "hackathon", password: "hackathon", database: "hackathon", charset: "utf8mb4"});
 con.on('error', (err) => {console.warn(err)});
 con.connect((err) => {if (err) return console.error('error connecting: ' + err.stack); console.log('mysql for MAIN as id ' + con.threadId);});
 require('mysql-utilities').upgrade(con);
@@ -26,6 +26,7 @@ mainApp.use(bodyParser.urlencoded({ extended: true })).use(bodyParser.json()).us
 
 mainApp.use(express.static('/root/hackathon/public'));
 
+
 let gets = fs.readdirSync("/root/hackathon/get/");
 
 gets.forEach(file => {
@@ -40,23 +41,20 @@ gets.forEach(file => {
 
 });
 
-fs.readdir("/root/hackathon/post/", (err, files) => {
-  if (err) return console.error(err);
-  let counter = files.length;
-  let counteris = 0;
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
 
-    try {
-      const post = require(`./post/${file}`);
-      mainApp.post(post.path, post.func.bind(null, con));
-      console.log(`POST `+`${post.path}`+` загржен. [${counteris}/${counter}]`);
-      delete require.cache[require.resolve(`./post/${file}`)];
-      counteris++;
-    } catch (e) {console.warn(e)}
+let posts = fs.readdirSync("/root/hackathon/post/");
 
-  });
-  if (counter == counteris) console.log('Все POST загружены! \n \n');
+posts.forEach(file => {
+  if (!file.endsWith(".js")) return;
+
+  try {
+    const post = require(`./post/${file}`);
+    mainApp.post(post.path, post.func.bind(null, con));
+    console.log(`POST `+`${post.path}`+` загржен.`);
+    delete require.cache[require.resolve(`./post/${file}`)];
+    counteris++;
+  } catch (e) {console.warn(e)}
+
 });
 
 // Handle 404 AND 500
