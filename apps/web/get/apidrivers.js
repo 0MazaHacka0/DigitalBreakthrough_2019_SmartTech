@@ -20,15 +20,17 @@ module.exports.func = async (con, req, res) => {
 
 	if (req.headers['authorization'].split(' ')[0] != 'Bearer') return res.json({err: "unauthorized"});
 
-	let data = await con.promise(con, con.query, 'SELECT name, routes.lat, routes.lng, time, day, avatar FROM routes LEFT JOIN users using(userid) WHERE id = (SELECT id FROM users WHERE keyg = ?) AND free > broned AND direction = ?', [req.headers['authorization'].split(' ')[1]], req.query.direction);
+	let data = await con.promise(con, con.query, 'SELECT name, routes.lat, routes.lng, time, day, avatar FROM routes LEFT JOIN users using(userid) WHERE id = (SELECT id FROM users WHERE keyg = ?) AND free > broned AND direction = ?', [req.headers['authorization'].split(' ')[1], req.query.direction]);
   data = data.res;
 
 	if (!data) return res.json({err: "NoDrivers"});
 
-	data.forEach((item, i, arr) => {
-		console.log(getDistanceFromLatLonInKm(req.query.lat, req.query.lng, item.lat, item.lng));
-		if (getDistanceFromLatLonInKm(req.query.lat, req.query.lng, item.lat, item.lng) > 1.5) {arr.splice(i, 1)}
-	});
+  if (!req.query.direction) {
+  	data.forEach((item, i, arr) => {
+  		console.log(getDistanceFromLatLonInKm(req.query.lat, req.query.lng, item.lat, item.lng));
+  		if (getDistanceFromLatLonInKm(req.query.lat, req.query.lng, item.lat, item.lng) > 1.5) {arr.splice(i, 1)}
+  	});
+  }
 
 	console.log(data);
 	res.json(data);
