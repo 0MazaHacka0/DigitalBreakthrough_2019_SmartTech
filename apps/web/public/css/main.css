@@ -1951,7 +1951,7 @@
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
-			color: #767d85;
+			color: #FFFFFF;
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1em;
@@ -1990,15 +1990,15 @@
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
 			background: #f6755e;
-			border-color: #f6755e;
+			/*border-color: #009900;*/
 			color: #ffffff;
 			content: '\f00c';
 		}
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #25a2c3;
-			box-shadow: 0 0 0 1px #25a2c3;
+			/*border-color: #009900;*/
+			/*box-shadow: 0 0 0 1px #25a2c3;*/
 		}
 
 	input[type="checkbox"] + label:before {
@@ -3114,4 +3114,9 @@ text-align:right;}
 #rb{
 	color: #ffffff;
 	font-size:20px;
+}
+
+#map {
+	width: 100%;
+	height: 500px;
 }

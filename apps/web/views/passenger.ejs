@@ -16,14 +16,8 @@
 
 
 		<!-- Two -->
-			<section id="two" class="wrapper style1 special">
-				<div class="inner" id="pasha">
-				<h1>Укажите точку отправления</h1>
-				<p>карта тип</p>
-				<h2>Или введите адрес</h2>		
-				<input type="text" placeholder="Адрес" class="tx"> <br>
-				<a href="index7.html"><input type="submit" value="Принять" class="tx"> </a><br>
-				</div>
+			<section id="two" class="style1 special">
+					<div id="map"></div>
 			</section>	
 		<!-- Footer -->
 			<footer id="footer">
@@ -47,6 +41,28 @@
 			<script src="/js/skel.min.js"></script>
 			<script src="/js/util.js"></script>
 			<script src="/js/main.js"></script>
+			<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+			<script>
+				ymaps.ready(() => {
+					var myMap = new ymaps.Map('map', {
+						center: [47.237995, 39.712194], 
+						zoom: 17
+					}, {
+						searchControlProvider: 'yandex#search'
+					});
 
+					var geolocation = ymaps.geolocation;
+
+					geolocation.get({
+							provider: 'browser',
+							mapStateAutoApply: true
+					}).then(function (result) {
+							// Синим цветом пометим положение, полученное через браузер.
+							// Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
+							result.geoObjects.options.set('preset', 'islands#blueCircleIcon');
+							myMap.geoObjects.add(result.geoObjects);
+					});
+				});
+			</script>
 	</body>
 </html>
