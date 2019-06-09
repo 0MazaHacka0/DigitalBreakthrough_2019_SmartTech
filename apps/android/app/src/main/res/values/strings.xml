@@ -4,5 +4,14 @@
 
     <!-- Main activity -->
     <string name="main_company_logo_description">Company logo</string>
+    <string name="title_activity_event">EventActivity</string>
+
+    <!-- Select activity -->
+    <string name="select_dinner">Совместные обеды</string>
+    <string name="select_ride">Поехать вместе</string>
+    <string name="select_flex">Вместе отдохнуть</string>
+    <string name="title_activity_select">SelectActivity</string>
+    <string name="title_activity_passenger">Map</string>
+    <string name="title_activity_driver_screen">DriverScreenActivity</string>
 
 </resources>

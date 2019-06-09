@@ -12,7 +12,6 @@
 
     <LinearLayout
         style="@style/event_inner_layout"
-        android:background="@drawable/bottom_tint"
         android:id="@+id/select_dinner_layout">
 
         <TextView

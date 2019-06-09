@@ -13,5 +13,12 @@
     <dimen name="main_text_field_margin_bottom">5dp</dimen>
     <!-- Buttons -->
     <dimen name="main_login_button"></dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Event screen -->
+    <dimen name="event_layout_margin_horizontal">10dp</dimen>
+    <dimen name="event_layout_margin_vertical">15dp</dimen>
+    <!-- Text view -->
+    <dimen name="event_text_view_text_size">30sp</dimen>
 
 </resources>

@@ -47,7 +47,11 @@ dependencies {
     // Crashlytics
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
 
+    // Maps
+    implementation 'com.google.maps.android:android-maps-utils:0.5+'
+
     // Local unit tests
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.7.1'
     testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.8'

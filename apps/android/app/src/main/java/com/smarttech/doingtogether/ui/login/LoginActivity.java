@@ -1,5 +1,7 @@
 package com.smarttech.doingtogether.ui.login;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +20,7 @@ import com.smarttech.doingtogether.data.network.AppApiHelper;
 import com.smarttech.doingtogether.data.network.model.DomainResponse;
 import com.smarttech.doingtogether.data.network.model.LoginRequest;
 import com.smarttech.doingtogether.data.network.model.LoginResponse;
+import com.smarttech.doingtogether.ui.event.EventActivity;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -38,10 +41,13 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        setTitle("Вход");
 
         // Api
         mApi = AppApiHelper.getRetrofitAdapter();
@@ -98,7 +104,12 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void accept(LoginResponse loginResponse) throws Exception {
                                     if (loginResponse.getKey() != null) {
-                                        Toast.makeText(getApplicationContext(), "WORK!", Toast.LENGTH_SHORT).show();
+                                        getSharedPreferences("settings", Context.MODE_PRIVATE)
+                                                .edit()
+                                                .putString("key", loginResponse.getKey())
+                                                .apply();
+                                        startActivity(new Intent(LoginActivity.this,
+                                                EventActivity.class));
                                     }
                                 }
                             });

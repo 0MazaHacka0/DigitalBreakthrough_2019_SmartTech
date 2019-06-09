@@ -3,7 +3,7 @@ package com.smarttech.doingtogether.utils;
 public class AppConstants {
 
     // API
-    // public static final String API_AUTHORIZATION_HEADER = null;
+    public static final String API_AUTHORIZATION_HEADER = "Authorization";
     public static final String API_BASE_URL = "https://test-discord.ga/api/";
 
     // public static final String API_PASSWORD_AUTHENTICATION = "password";
