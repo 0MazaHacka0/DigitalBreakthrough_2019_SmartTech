@@ -20,7 +20,7 @@ module.exports.func = async (con, req, res) => {
 
 	if (req.headers['authorization'].split(' ')[0] != 'Bearer') return res.json({err: "unauthorized"});
 
-	let data = await con.promise(con, con.query, 'SELECT name, routes.lat, routes.lng, time, day, avatar FROM routes LEFT JOIN users using(userid) WHERE id = (SELECT id FROM users WHERE keyg = ?) AND free > broned AND direction = ?', [req.headers['authorization'].split(' ')[1], req.query.direction]);
+	let data = await con.promise(con, con.query, 'SELECT name, routes.lat, routes.lng, time, avatar FROM routes LEFT JOIN users using(userid) WHERE id = (SELECT id FROM users WHERE keyg = ?) AND free > broned AND direction = ? AND day = ?', [req.headers['authorization'].split(' ')[1], req.query.direction, new Date().getDay()]);
   data = data.res;
 
 	if (!data) return res.json({err: "NoDrivers"});
