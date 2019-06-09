@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.event.EventActivity"
+    android:orientation="vertical"
+    style="@style/event_layout"
+    tools:showIn="@layout/activity_event">
+
+    <LinearLayout
+        style="@style/event_inner_layout"
+        android:background="@drawable/bottom_tint"
+        android:id="@+id/select_dinner_layout">
+
+        <TextView
+            style="@style/event_text_view"
+            android:layout_marginRight="15dp"
+            android:text="@string/select_dinner" />
+
+        <ImageView
+            style="@style/event_image_view"
+            android:src="@drawable/dinner" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/select_ride_layout"
+        style="@style/event_inner_layout">
+
+        <ImageView
+            style="@style/event_image_view"
+            android:src="@drawable/rides" />
+
+        <TextView
+            style="@style/event_text_view"
+            android:text="@string/select_ride" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/select_flex_layout"
+        style="@style/event_inner_layout">
+
+        <TextView
+            style="@style/event_text_view"
+            android:text="@string/select_flex" />
+
+        <ImageView
+            style="@style/event_image_view"
+            android:src="@drawable/dance" />
+
+    </LinearLayout>
+
+</LinearLayout>
